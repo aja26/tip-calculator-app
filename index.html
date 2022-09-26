@@ -12,24 +12,30 @@
 
 </head>
 <body>
-
+  <header>
+    <div class="logo">
+      <img src="images/logo.svg" alt="">
+    </div>
+ </header>
   <main>
     <div class="col first-col">
       <form>
         <div class="form-control">
           <label for="bill">Bill</label>
-          <input type="number"  class="bill" placeholder="0" max="6">
+          <input type="text" id="bill" class="bill" placeholder="0" maxlength="6"></input>
+          <!-- <input oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"></input> -->
+
         </div>
 
         <div class="form-control">
           <label for="tip">Select Tip %</label>
           <div id="tip">
-            <option value="5%">5%</option> 
-            <option value="10%">10%</option> 
-            <option value="15%">15%</option> 
-            <option value="25%">25%</option> 
-            <option value="50%"> 50%</option>
-            <option value="Custom" class="custom">
+            <option id="5" value="5%">5%</option> 
+            <option id="10" value="10%">10%</option> 
+            <option id="15" value="15%">15%</option> 
+            <option id="25" value="25%">25%</option> 
+            <option id="50" value="50%"> 50%</option>
+            <option id="custom" value="Custom" class="custom">
               <input type="text" placeholder="Custom">
             </option>
           </div>
@@ -37,7 +43,7 @@
 
         <div class="form-control">
           <label for="numer of people">Number of People</label>
-          <input type="text" class="number" placeholder="0" maxlength="2">
+          <input type="text" id="numberofpeople" class="number" placeholder="0" maxlength="2">
         </div>
       </form>
     </div>
@@ -48,7 +54,7 @@
         <small>/ person</small> 
 
         <div id="tipcost">
-          <p>$4.37</p>
+          <p>$0.00</p>
         </div>
       </div>
 
@@ -57,17 +63,17 @@
         <small>  / person</small> 
 
         <div id="total">
-          <p>$32.97</p>
+          <p>$0.00</p>
         </div>
       </div>
   
     
-     <button id="btn">Reset</button> 
+     <button disabled id="btn">Reset</button> 
    </div>
   </main>
 
 
   
- 
+ <script src="app.js"></script>
 </body>
 </html>

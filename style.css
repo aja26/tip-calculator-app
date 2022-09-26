@@ -8,7 +8,8 @@
 /* ### Neutral */
 
 --very-dark-cyan: hsl(183, 100%, 15%);
---dark-grayish-cyan: hsl(186, 14%, 43%);
+--very-dark-cyan-button: hsl(183, 75%, 25%);
+--dark-grayish-cyan: hsl(151, 14%, 43%);
 --grayish-cyan: hsl(184, 14%, 56%);
 --light-grayish-cyan: hsl(185, 41%, 84%);
 --very-light-grayish-cyan: hsl(189, 41%, 97%);
@@ -27,7 +28,18 @@ body{
     height: 100vh;
     display: grid;
     justify-content: center;
+    align-content: center;
+}
+
+header{
+    margin-bottom: 7rem;
+}
+
+.logo{
+    margin-bottom: -30rem;
+    display: grid;
     align-items: center;
+    justify-content: center;
 }
 
 main{
@@ -92,7 +104,7 @@ option{
 }
 
 option:hover{
-    background: var(--strong-cyan);
+    background: var(--light-grayish-cyan);
     color: var(--very-dark-cyan);
     cursor: pointer;
 }
@@ -111,6 +123,10 @@ option.custom input{
     border-radius: 0.25rem;
 }
 
+option.active{
+    background-color: var(--strong-cyan);
+}
+
 input{
     background-color: var(--very-light-grayish-cyan);
     border: 0;
@@ -122,6 +138,11 @@ input{
     font-weight: bold;
     cursor: pointer;
     border-radius: 0.25rem;
+    height: 2rem;
+}
+
+input:placeholder-shown{
+    font-family: 'Space Mono', monospace;
 }
 
 input::-webkit-outer-spin-button,
@@ -162,10 +183,15 @@ button{
     width: 100%;
     padding: 0.5rem;
     text-transform: uppercase;
-    margin-top: 3rem;
+    margin-top: 6rem;
     border-radius: 0.25rem;
     font-size: 1rem;
     cursor: pointer;
+}
+
+button:disabled{
+    background: var(--very-dark-cyan-button);
+    color: var(--very-dark-cyan);
 }
 
 input.bill{
@@ -191,3 +217,12 @@ input:focus{
     outline: 2px solid var(--strong-cyan);
   
 }
+
+@media (max-width:900px){
+    main{
+        width: 350px;
+        grid-template-columns: 1fr;
+    }
+
+
+}    
