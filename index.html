@@ -30,14 +30,16 @@
         <div class="form-control">
           <label for="tip">Select Tip %</label>
           <div id="tip">
-            <option id="5" value="5%">5%</option> 
-            <option id="10" value="10%">10%</option> 
-            <option id="15" value="15%">15%</option> 
-            <option id="25" value="25%">25%</option> 
-            <option id="50" value="50%"> 50%</option>
-            <option id="custom" value="Custom" class="custom">
-              <input type="text" placeholder="Custom">
-            </option>
+            <ul>
+                <li id="5" value="5%">5%</li> 
+                <li id="10" value="10%">10%</li> 
+                <li id="15" value="15%">15%</li>
+                <li id="25" value="25%">25%</li> 
+                <li id="50" value="50%"> 50%</li>
+                <li id="custom" value="Custom" class="custom">
+                  <input type="text" placeholder="Custom" maxlength="3" class="custom-input">
+                </li>
+            </ul>
           </div>
         </div>
 
@@ -68,7 +70,7 @@
       </div>
   
     
-     <button disabled id="btn">Reset</button> 
+     <button disabled="disabled" id="btn">Reset</button> 
    </div>
   </main>
 

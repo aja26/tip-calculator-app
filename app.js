@@ -1,10 +1,5 @@
 const bill = document.getElementById('bill');
-const tips = document.querySelectorAll('#tip option');
-const five = document.getElementById('5');
-const ten = document.getElementById('10');
-const fifteen = document.getElementById('15');
-const twentyFive = document.getElementById('25');
-const fifty = document.getElementById('50');
+const tips = document.querySelectorAll('#tip li');
 const custom = document.querySelector('#custom input');
 const nop = document.getElementById('numberofpeople');
 
@@ -20,8 +15,7 @@ function checkInput(e){
     
     const key = e.keyCode;
     const val = e.target.value
-    // console.log(val); 
-
+     console.log(val); 
 
         if(key >= 65 && key <= 90){
             
@@ -29,82 +23,85 @@ function checkInput(e){
         return;
         } else{
             currentBill = val;
-           // console.log(currentBill);
             selectTip();
-            
         }
 }
 
 function selectedTip(tip){
-   
+    console.log(tip);
     let selTip = tip.value;
-    console.log(selTip);
-    let newSelTip = selTip.slice(0, selTip.length -1);
+     console.log(selTip);
     
-    console.log(newSelTip);
-    
-    calculateTip(newSelTip);
+     currentTip = selTip;
+     nop.addEventListener('keyup', (e) => numberOfPeople(e));
     
 }
 
-function calculateTip(val){
+function calculateTip(bill, tip, nop){
 
     // check is bill is not empty with if statement before doing below calculation
-    let tipAmount = (currentBill / 100 ) * val;
-    console.log(currentBill, tipAmount);
+    let totalCost = (bill / 100 ) * tip;
 
-    tipcost.innerHTML = `<p>$${tipAmount}</p>`;
+    let newTip = totalCost / nop;
+    let totalPerPerson  = (bill / nop) + newTip
+    tipcost.innerHTML = `<p>$${newTip.toFixed(2)}</p>`;
+    total.innerHTML = `<p>$${totalPerPerson.toFixed(2)}</p>`;
+
+    reset.removeAttribute('disabled');
 }
 
 function resetInputs(){
-
-    // if(bill){
-    //     removeAttribute('disabled');
-    // }
-    
     bill.value = '';
     custom.value = '';
     nop.value = '';
 
     tipcost.innerHTML = `<p>$0.00</p>`;
     total.innerHTML = `<p>$0.00</p>`;
+    tips.forEach(tip => {
+        tip.classList.remove('active');
+    })
+
+    reset.setAttribute('disabled', 'true');
 }
 
 function enterCustomVal(e){
     console.log(e.target.value);
-    let customSel = e.target;
+     let customSel = e.target;
     customSel.addEventListener('keyup', (e) => {
 
         if(e.target.value){
             currentTip = e.target.value;
-            
         }
     })
 }
 
 function numberOfPeople(e){
+  
     let people = e.target.value;
-
-    if(currentBill && currentTip && people){
+    console.log(people);
+    if(currentBill && currentTip){
         console.log('people chosen');
     }
+
+    calculateTip(currentBill, currentTip, people);
 }
 
-bill.addEventListener('keyup', (e) => checkInput(e));
+bill.addEventListener('change', (e) => checkInput(e));
 
 
 function selectTip(){
 
     tips.forEach(tip => {
         tip.addEventListener('click', (e) => {
+            console.log(e, tip);
                 tips.forEach(newTip => {
                     if(tip !== newTip){
                         newTip.classList.remove('active')
+                        selectedTip(tip);
                     } else if(newTip.value === 'Custom'){
-                        console.log(1233252452452);
                         newTip.classList.remove('active')
-                        currentTip = tip.value;
-                        enterCustomVal(e);
+                        currentTip = tip.target.value;
+                        enterCustomVal(tip);
                     }
                 })
                 tip.classList.add('active');     
@@ -113,9 +110,5 @@ function selectTip(){
 }
 
 
-
-nop.addEventListener('keyup', (e) => numberOfPeople(e));
-
 reset.addEventListener('click', resetInputs);
-
 window.addEventListener('DOMContentLoaded', resetInputs);
