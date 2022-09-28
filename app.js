@@ -2,20 +2,16 @@ const bill = document.getElementById('bill');
 const tips = document.querySelectorAll('#tip li');
 const custom = document.querySelector('li#custom input');
 const nop = document.getElementById('numberofpeople');
-
+const nopLabel = document.getElementById('nop-label');
 const tipcost = document.getElementById('tipcost');
 const total = document.getElementById('total');
-
 const reset = document.getElementById('btn');
-
 let currentBill = 0;
 let currentTip = 0;
 
 function checkInput(e){
-    
     const key = e.keyCode;
-    const val = e.target.value
-    // console.log(val); 
+    const val = e.target.value 
 
         if(key >= 65 && key <= 90){
             
@@ -28,18 +24,14 @@ function checkInput(e){
 }
 
 function selectedTip(tip){
-    console.log(tip);
     let selTip = +tip.id;
-    console.log(selTip);
     
      currentTip = selTip;
 
      nop.addEventListener('keyup', (e) => numberOfPeople(e));
-    
 }
 
 function calculateTip(bill, tip, nop){
-
     // check is bill is not empty with if statement before doing below calculation
     let totalCost = (bill / 100 ) * tip;
 
@@ -78,14 +70,15 @@ function enterCustomVal(e){
 }
 
 function numberOfPeople(e){
-  
     let people = e.target.value;
     console.log(people);
-    if(currentBill && currentTip){
-        console.log('people chosen');
+    
+    if(people > 0){
+        calculateTip(currentBill, currentTip, people);
+        nopLabel.classList.remove('err');
+    } else{
+        nopLabel.classList.add('err');
     }
-
-    calculateTip(currentBill, currentTip, people);
 }
 
 function selectTip(){
@@ -95,9 +88,8 @@ function selectTip(){
                 tips.forEach(newTip => {
                     if(tip !== newTip && tip.value !== 'Custom'){
                         newTip.classList.remove('active')
-                        custom
                         selectedTip(tip);
-                       // console.log(tip);
+   
                     } else if(tip.value = 'Custom'){
                         console.log(newTip);
                         newTip.classList.remove('active')
