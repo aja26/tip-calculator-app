@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
 :root{
-    /* ### Primary */
+/* ### Primary */
 
 --strong-cyan: hsl(172, 67%, 45%);
 
@@ -65,23 +65,8 @@ main{
     padding: 2rem;
 }
 
-label{
-    font-size: 12px;
-    display: block;
-    color: var(--very-dark-cyan);
-    margin-bottom: 0.25rem;
-}
-
-input, #tip{
-    margin-bottom: 1.5rem;
-}
-
-#tip{
-    border: 0;
-    width: 100%;
-    height: 100px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.form-control{
+    position: relative;
 }
 
 ul {
@@ -104,7 +89,7 @@ li{
     font-weight: bold;
 }
 
-li:hover{
+li:hover, button:hover{
     background: var(--light-grayish-cyan);
     color: var(--very-dark-cyan);
     cursor: pointer;
@@ -112,6 +97,41 @@ li:hover{
 
 li.custom{
     padding: 0;
+}
+
+label{
+    font-size: 12px;
+    display: block;
+    color: var(--very-dark-cyan);
+    margin-bottom: 0.25rem;
+}
+
+p#nop-label{
+    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    color: rgb(255, 53, 22);
+    display: none;
+}
+    
+
+p#nop-label.err{
+   
+    display: block;
+}
+
+input, #tip{
+    margin-bottom: 1.5rem;
+}
+
+#tip{
+    border: 0;
+    width: 100%;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 input.custom-input{
@@ -225,6 +245,4 @@ input:focus{
         width: 350px;
         grid-template-columns: 1fr;
     }
-
-
 }    
