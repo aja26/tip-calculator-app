@@ -31,10 +31,10 @@ function selectedTip(tip){
 }
 
 function calculateTip(bill, tip, nop){
-console.log('running', bill, tip, nop);
+
     if(bill > 0 && tip > 0 && nop > 0){
         let totalCost = (bill / 100 ) * tip;
-        console.log('all thing have something');
+        
     let newTip = totalCost / nop;
     let totalPerPerson  = (bill / nop) + newTip
     tipcost.innerHTML = `<p>$${newTip.toFixed(2)}</p>`;
@@ -62,10 +62,7 @@ function resetInputs(){
     reset.setAttribute('disabled', 'true');
 }
 
-function enterCustomVal(e){
-    console.log(custom);
-      let customSel = e.value;
-      console.log(customSel);
+function enterCustomVal(){
     custom.addEventListener('keyup', (e) => {
 
         if(custom.value > 0){
@@ -77,7 +74,6 @@ function enterCustomVal(e){
 
 function numberOfPeople(e){
     let people = e.target.value;
-    console.log(people);
     
     if(people > 0){
         nopLabel.classList.remove('err');
@@ -86,7 +82,7 @@ function numberOfPeople(e){
         
     } else{
         nopLabel.classList.add('err');
-    }
+    }  
 }
 
 function selectTip(){
