@@ -25,15 +25,14 @@ function checkInput(e){
 
 function selectedTip(tip){
     let selTip = +tip.id;
-    
-     currentTip = selTip;
-
-     nop.addEventListener('keyup', (e) => numberOfPeople(e));
+    currentTip = selTip;
+    nop.addEventListener('keyup', (e) => numberOfPeople(e));
 }
 
 function calculateTip(bill, tip, nop){
-    // check is bill is not empty with if statement before doing below calculation
-    let totalCost = (bill / 100 ) * tip;
+
+    if(bill > 0 && tip > 0 && nop > 0){
+        let totalCost = (bill / 100 ) * tip;
 
     let newTip = totalCost / nop;
     let totalPerPerson  = (bill / nop) + newTip
@@ -41,6 +40,8 @@ function calculateTip(bill, tip, nop){
     total.innerHTML = `<p>$${totalPerPerson.toFixed(2)}</p>`;
 
     reset.removeAttribute('disabled');
+    }
+    
 }
 
 function resetInputs(){
