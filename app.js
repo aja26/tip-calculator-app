@@ -1,6 +1,6 @@
 const bill = document.getElementById('bill');
 const tips = document.querySelectorAll('#tip li');
-const custom = document.querySelector('#custom input');
+const custom = document.querySelector('li#custom input');
 const nop = document.getElementById('numberofpeople');
 
 const tipcost = document.getElementById('tipcost');
@@ -15,7 +15,7 @@ function checkInput(e){
     
     const key = e.keyCode;
     const val = e.target.value
-     console.log(val); 
+    // console.log(val); 
 
         if(key >= 65 && key <= 90){
             
@@ -29,10 +29,11 @@ function checkInput(e){
 
 function selectedTip(tip){
     console.log(tip);
-    let selTip = tip.value;
-     console.log(selTip);
+    let selTip = +tip.id;
+    console.log(selTip);
     
      currentTip = selTip;
+
      nop.addEventListener('keyup', (e) => numberOfPeople(e));
     
 }
@@ -65,12 +66,13 @@ function resetInputs(){
 }
 
 function enterCustomVal(e){
-    console.log(e.target.value);
-     let customSel = e.target;
-    customSel.addEventListener('keyup', (e) => {
+    console.log(custom);
+      let customSel = e.value;
+      console.log(customSel);
+    custom.addEventListener('keyup', (e) => {
 
-        if(e.target.value){
-            currentTip = e.target.value;
+        if(custom.value > 0){
+            currentTip = custom.value;
         }
     })
 }
@@ -86,21 +88,20 @@ function numberOfPeople(e){
     calculateTip(currentBill, currentTip, people);
 }
 
-bill.addEventListener('change', (e) => checkInput(e));
-
-
 function selectTip(){
-
     tips.forEach(tip => {
         tip.addEventListener('click', (e) => {
-            console.log(e, tip);
+            
                 tips.forEach(newTip => {
-                    if(tip !== newTip){
+                    if(tip !== newTip && tip.value !== 'Custom'){
                         newTip.classList.remove('active')
+                        custom
                         selectedTip(tip);
-                    } else if(newTip.value === 'Custom'){
+                       // console.log(tip);
+                    } else if(tip.value = 'Custom'){
+                        console.log(newTip);
                         newTip.classList.remove('active')
-                        currentTip = tip.target.value;
+                        currentTip = tip.value;
                         enterCustomVal(tip);
                     }
                 })
@@ -109,6 +110,6 @@ function selectTip(){
     })
 }
 
-
+bill.addEventListener('change', (e) => checkInput(e));
 reset.addEventListener('click', resetInputs);
 window.addEventListener('DOMContentLoaded', resetInputs);
