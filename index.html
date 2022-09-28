@@ -22,6 +22,7 @@
       <form>
         <div class="form-control">
           <label for="bill">Bill</label>
+          <!-- <p id="nop-label" class="bill-err">can't be zero!</p> -->
           <input type="text" id="bill" class="bill" placeholder="0" maxlength="6"></input>
           <!-- <input oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"></input> -->
 
@@ -31,12 +32,12 @@
           <label for="tip">Select Tip %</label>
           <div id="tip">
             <ul>
-                <li id="5" value="5%">5%</li> 
-                <li id="10" value="10%">10%</li> 
-                <li id="15" value="15%">15%</li>
-                <li id="25" value="25%">25%</li> 
-                <li id="50" value="50%"> 50%</li>
-                <li id="custom" value="Custom" class="custom">
+                <li id="5">5%</li> 
+                <li id="10">10%</li> 
+                <li id="15">15%</li>
+                <li id="25">25%</li> 
+                <li id="50"> 50%</li>
+                <li id="custom" class="custom">
                   <input type="text" placeholder="Custom" maxlength="3" class="custom-input">
                 </li>
             </ul>
@@ -63,7 +64,7 @@
 
       <div class="price">
         <h2>Total</h2>
-        <small>  / person</small> 
+        <small>/ person</small> 
 
         <div id="total">
           <p>$0.00</p>
