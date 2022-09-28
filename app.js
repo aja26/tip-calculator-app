@@ -1,7 +1,7 @@
 const bill = document.getElementById('bill');
 const tips = document.querySelectorAll('#tip li');
 const custom = document.querySelector('li#custom input');
-const nop = document.getElementById('numberofpeople');
+const nop = document.getElementById('number-of-people');
 const nopLabel = document.getElementById('nop-label');
 const tipcost = document.getElementById('tipcost');
 const total = document.getElementById('total');
@@ -82,7 +82,7 @@ function numberOfPeople(e){
         
     } else{
         nopLabel.classList.add('err');
-    }  
+    }
 }
 
 function selectTip(){
