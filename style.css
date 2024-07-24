@@ -242,7 +242,7 @@ input:focus{
 
 @media (max-width:900px){
     main{
-        width: 350px;
+        width: 380px;
         grid-template-columns: 1fr;
     }
 }    
