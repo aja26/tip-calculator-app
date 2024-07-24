@@ -245,4 +245,8 @@ input:focus{
         width: 380px;
         grid-template-columns: 1fr;
     }
+
+    .col {
+        margin: 0.25rem;
+    }
 }    
